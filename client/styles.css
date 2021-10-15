@@ -4,6 +4,11 @@ button {
   cursor: pointer;
 }
 
+.movies {
+  display: flex;
+  flex-direction: column;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;

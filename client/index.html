@@ -7,9 +7,6 @@
   <body class="container">
     <button id="complimentButton">Get a compliment</button>
     <button id="fortuneButton">Get your fortune</button>
-    <div class="movies"></div>
-        <br/><button class="inspireMovies">Inspirational Movies</button>
-    </div>
     <br/><div class="dropDown">
         <button type="dropBtn">Choose an animal</button>
         <div class = 'dropDownContent'>
@@ -19,6 +16,16 @@
         </div>
     </div>
     
+    <br/><br/><br/><button class="inspireMovies">Inspirational Movies</button>
+    <br/><ul class="movies">
+        <a target="_blank" href="https://www.imdb.com/title/tt0075148/" id="0" style="display:none"></a>
+        <a target="_blank" href="https://www.imdb.com/title/tt0433035/?ref_=fn_al_tt_1" id="1" style="display:none"></a>
+        <a target="_blank" href="https://www.imdb.com/title/tt0268978/?ref_=fn_al_tt_1" id="2" style="display:none"></a>
+        <a target="_blank" href="https://www.imdb.com/title/tt0264464/?ref_=fn_al_tt_1" id="3" style="display:none"></a>
+        <a target="_blank" href="https://www.imdb.com/title/tt0454921/?ref_=fn_al_tt_1" id="4" style="display:none"></a>
+        <a target="_blank" href="https://www.imdb.com/title/tt0446029/?ref_=fn_al_tt_1" id="5" style="display:none"></a>
+    </ul>
+
     <img class='elephant' src="Elephant.jpg" style="display: none"/>
     <img class="dolphin" src="dolphin.jpg" style="display: none"/>
     <img class="cheetah" src="Cheetah.jpg" style="display: none"/>
@@ -42,13 +49,11 @@
       document.querySelector('.inspireMovies').onclick = function () {
           axios.get('http://localhost:4000/api/movies')
           .then (function (res) {
-              console.log(res.data)
-              let movieSection = document.querySelector('.movies')
-              let movieList = document.createElement('li')
-              movieList.textcontent = res.data
-              document.querySelector('body').appendChild(movieList)
 
-
+            for(let i=0; i< res.data.length; i++) {
+                document.getElementById(i).textContent = res.data[i]
+                document.getElementById(i).style.display = 'block'
+            }
           })
       }
 
